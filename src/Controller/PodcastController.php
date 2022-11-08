@@ -8,8 +8,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PodcastController extends AbstractController
 {
-    #[Route('/podcast', name: 'app_podcast')]
-    public function index(): Response
+    #[Route('/podcast/{slug}', name: 'podcast_show')]
+    public function show(): Response
     {
         return $this->render('podcast/index.html.twig', [
             'controller_name' => 'PodcastController',
