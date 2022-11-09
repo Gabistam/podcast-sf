@@ -1,0 +1,27 @@
+{% set podcast_show = path('/podcast/{slug}', { 'slug': podcast.slug}) %}
+
+<article class="mb-5>
+    <div class="row"> 
+        <div class="col-md-5>
+        {% if podcast.featuredImage %}
+            <a href="{{ podcast_show }}">
+             <img src="/uploads/{{ podcast.featuredImage.filename }}" alt="{{ podcast.featuredImage.altText }}"     loading="lazy" width="350" height="205">
+            </a>
+        {% endif %}
+        </div>
+
+        <div class="col-md-7">
+            <h2>
+                <a href="{{ podcast_show }}" class="text-decoration-none">
+                    {{ podcast.title }}
+                </a>
+            </h2>
+            <p>
+                {{ podcast.createdAt|date('d M Y') }}
+            </p>
+            {{ podcast.featuredText ?: podcast.content|striptags|slice(0, 130) ~ '...' }}
+        </div>
+    </div>
+
+</article>
+

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ podcast.title}}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>{{ podcast.title}}</h1>
+
+        <hr>
+
+        {{ podcast.content|raw}}
+    </div>
+{% endblock %}
