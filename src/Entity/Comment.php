@@ -22,7 +22,7 @@ class Comment
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Podcast $podcasts = null;
+    private ?Podcast $podcast = null;
 
     public function getId(): ?int
     {
@@ -53,14 +53,14 @@ class Comment
         return $this;
     }
 
-    public function getPodcasts(): ?Podcast
+    public function getpodcast(): ?Podcast
     {
-        return $this->podcasts;
+        return $this->podcast;
     }
 
-    public function setPodcasts(?Podcast $podcasts): self
+    public function setpodcast(?Podcast $podcast): self
     {
-        $this->podcasts = $podcasts;
+        $this->podcast = $podcast;
 
         return $this;
     }

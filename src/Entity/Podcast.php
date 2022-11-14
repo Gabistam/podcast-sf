@@ -40,7 +40,7 @@ class Podcast
     #[ORM\ManyToMany(targetEntity: Category::class, mappedBy: 'podcasts')]
     private Collection $categories;
 
-    #[ORM\OneToMany(mappedBy: 'podcasts', targetEntity: Comment::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'podcast', targetEntity: Comment::class, orphanRemoval: true)]
     private Collection $comments;
 
     #[ORM\ManyToOne]
@@ -183,7 +183,7 @@ class Podcast
     {
         if (!$this->comments->contains($comment)) {
             $this->comments->add($comment);
-            $comment->setPodcasts($this);
+            $comment->setPodcast($this);
         }
 
         return $this;
@@ -193,8 +193,8 @@ class Podcast
     {
         if ($this->comments->removeElement($comment)) {
             // set the owning side to null (unless already changed)
-            if ($comment->getPodcasts() === $this) {
-                $comment->setPodcasts(null);
+            if ($comment->getPodcast() === $this) {
+                $comment->setPodcast(null);
             }
         }
 
