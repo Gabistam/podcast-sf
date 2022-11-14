@@ -3,10 +3,20 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-<main class="container">
-    <div class="row">
-        <div class="col-md-8"></div>
-        <div class="col-md-4"></div>
-    </div>
-</main>
+    <main class="container">
+        <div class="row g-5">
+            <div class="col-xl-8">
+                <h3 class="pb-4 mb-4 fst-italic border-bottom">podcasts récents</h3>
+                <div id="podcasts-list">
+                    {% include 'podcast/list.html.twig' with { podcasts: podcasts, leftCol: 5, rightCol: 7 } %}
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="position-sticky" style="top: 2rem;">
+                    {% include 'widget/about.html.twig' %}
+                    {% include 'widget/categories.html.twig' %}
+                </div>
+            </div>
+        </div>
+    </main>
 {% endblock %}
